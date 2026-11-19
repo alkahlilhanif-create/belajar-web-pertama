@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Tugas Harianku</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f9; display: flex; justify-content: center; padding-top: 50px; }
+        .kotak { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 320px; }
+        input { width: 70%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 8px 12px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        ul { list-style: none; padding: 0; margin-top: 20px; }
+        li { background: #eee; padding: 8px; margin-bottom: 8px; border-radius: 5px; display: flex; justify-content: space-between; }
+        .hapus { background: #dc3545; padding: 4px 8px; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="kotak">
+    <h3>Daftar Tugasku</h3>
+    <input type="text" id="inputTugas" placeholder="Tulis tugas baru...">
+    <button onclick="tambahTugas()">Tambah</button>
+    <ul id="daftarList"></ul>
+</div>
+
+<script>
+    function tambahTugas() {
+        // 1. Ambil teks dari kotak input (Variabel)
+        let kotakInput = document.getElementById("inputTugas");
+        let teksTugas = kotakInput.value;
+
+        // 2. Cek apakah kotak kosong atau ada isinya (Logika If-Else)
+        if (teksTugas === "") {
+            alert("Tulis dulu tugasnya sebelum klik Tambah!");
+            return;
+        }
+
+        // 3. Buat baris daftar baru di layar
+        let itemBaru = document.createElement("li");
+        itemBaru.innerHTML = teksTugas + ' <button class="hapus" onclick="this.parentElement.remove()">Selesai</button>';
+
+        // 4. Masukkan ke dalam daftar dan kosongkan kotak ketik
+        document.getElementById("daftarList").appendChild(itemBaru);
+        kotakInput.value = "";
+    }
+</script>
+
+</body>
+</html>
